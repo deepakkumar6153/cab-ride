@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  overflow-y: scroll;
+
+  .centerContent {
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .upper {
+      width: 100%;
+      min-width: 300px;
+      max-width: 400px;
+      padding: 1rem 1.5rem 1.5rem;
+      border: 1px solid gray;
+    }
+
+    button {
+      padding: 10px;
+      margin: 0.75rem 0;
+      width: 120px;
+    }
+
+    .lower {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .submit {
+        cursor: pointer;
+        min-width: 150px;
+        border: none;
+        color: #3f51b1;
+        font-weight: 500;
+        border-radius: 4px;
+        font-size: 1rem;
+        background-color: #fff;
+      }
+
+      .text {
+        margin-top: 0.75rem;
+        padding: 10px;
+      }
+    }
+  }
+}
