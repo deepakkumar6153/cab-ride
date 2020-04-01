@@ -1,51 +1,69 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: stretch;
-  padding: 0;
-
   overflow-y: scroll;
 
-  .search {
-    text-align: center;
-    padding: 20px;
-    width: 100%;
-    flex: 1;
-
+  .contentWrap {
+    margin: auto;
+    max-width: 800px;
+    height: 100%;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-    .from {
-      max-width: 600px;
-      min-width: 300px;
-      width: 40%;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    .search {
+      padding: 1.5rem 0;
+      width: 100%;
       flex: 1;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .from {
+        min-width: 250px;
+        max-width: 600px;
+        padding: 0 1.5rem;
+
+        flex: 1;
+      }
+
+      .to {
+        min-width: 250px;
+        padding: 0 1.5rem;
+        max-width: 600px;
+        flex: 1;
+      }
+    }
+    .results {
+      overflow-y: scroll;
+      flex: 5;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .card {
+        flex: 1;
+        padding: 0 1.5rem;
+      }
     }
 
-    .to {
-      max-width: 600px;
-      min-width: 300px;
-      width: 40%;
-      flex: 1;
+    .noResults {
+      padding: 0 1.5rem;
+      flex: 5;
+      text-align: center;
     }
-  }
 
-  .confirm {
-    box-shadow: 0px -2px 10px -1px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    flex: 1;
-    // padding: 10px;
-
-    .submit {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
+    .confirm {
+      // box-shadow: 0px -2px 10px -1px rgba(0, 0, 0, 0.2);
+      width: 100%;
       flex: 1;
-      font-weight: 500;
-      font-size: 1rem;
-      width: 180px;
+      padding: 5px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .submit {
+        flex: 1;
+        font-weight: 500;
+        font-size: 1rem;
+        max-width: 180px;
+      }
     }
   }
 }

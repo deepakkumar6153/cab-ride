@@ -1,5 +1,5 @@
-import { SET_SHOW_TOAST } from "../constants/constants";
+import { SET_TOAST_INFO } from "../constants/constants";
 
-export const setShowToast = showToast => {
-  return { type: SET_SHOW_TOAST, payload: showToast };
+export const setToastInfo = toastInfo => {
+  return { type: SET_TOAST_INFO, payload: toastInfo };
 };

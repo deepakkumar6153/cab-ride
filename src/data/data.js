@@ -1,5 +1,5 @@
 export default {
-  female: [
+  firstNames: [
     "Saanvi",
     "Anya",
     "Aadhya",
@@ -23,9 +23,7 @@ export default {
     "Eva",
     "Shanaya",
     "Kyra",
-    "Siya"
-  ],
-  male: [
+    "Siya",
     "Aarav",
     "Vihaan",
     "Vivaan",
@@ -60,7 +58,8 @@ export default {
     "Aarush",
     "Kian",
     "Darsh",
-    "Veer"
+    "Veer",
+    "Deepak"
   ],
   surnames: [
     "Bedi",

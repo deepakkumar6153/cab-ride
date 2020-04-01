@@ -9,14 +9,14 @@ import Register from "./components/Register/Register";
 import Book from "./components/Book/Book";
 
 import "./App.css";
-import { setShowToast } from "./actions/appActions";
+import { setToastInfo } from "./actions/appActions";
 
 export default props => {
   const dispatch = useDispatch();
-  const { showToast } = useSelector(({ showToast }) => ({
-    showToast
+  const { toast } = useSelector(({ toast }) => ({
+    toast
   }));
-  console.log(showToast);
+  const { show = false, type, message = "" } = toast;
   return (
     <>
       <BrowserRouter>
@@ -27,17 +27,25 @@ export default props => {
           <Route exact path="/book" component={Book} />
         </Switch>
       </BrowserRouter>
-
-      <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        open={showToast}
-        autoHideDuration={3000}
-        onClose={() => {
-          dispatch(setShowToast(false));
-        }}
-      >
-        <Alert severity="success">Cab confirmed!!</Alert>
-      </Snackbar>
+      {/* specific check for show variable, because of interim glitch observed
+      if the variable is not used, clicking outside while the snackbar is active, 
+      resulted in a green alert being shown for a few milliseconds*/}
+      {show && (
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={show}
+          autoHideDuration={3000}
+          onClose={() => {
+            dispatch(
+              setToastInfo({
+                show: false
+              })
+            );
+          }}
+        >
+          <Alert severity={type}>{message}</Alert>
+        </Snackbar>
+      )}
     </>
   );
 };

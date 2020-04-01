@@ -1,11 +1,15 @@
-import { SET_SHOW_TOAST } from "../constants/constants";
+import { SET_TOAST_INFO } from "../constants/constants";
 
-const initialState = false;
+const initialState = {
+  show: false,
+  type: "success",
+  message: "Success !!"
+};
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_SHOW_TOAST:
-      state = payload;
+    case SET_TOAST_INFO:
+      state = { ...initialState, ...payload };
       break;
     default:
       return state;

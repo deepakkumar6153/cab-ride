@@ -4,7 +4,7 @@ import ReduxThunk from "redux-thunk";
 import user from "../reducers/userReducer.js";
 import results from "../reducers/bookingReducer";
 import isLoggedIn from "../reducers/loginReducer";
-import showToast from "../reducers/appReducer";
+import toast from "../reducers/appReducer";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const logger = state => next => action => {
@@ -22,7 +22,7 @@ export const rootReducer = combineReducers({
   user,
   results,
   isLoggedIn,
-  showToast
+  toast
 });
 
 export default function configureStore(initialState = {}) {

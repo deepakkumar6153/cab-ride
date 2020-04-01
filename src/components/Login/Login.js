@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import s from "./Login.module.scss";
 import Header from "../Header/Header";
 import { setIsLoggedIn } from "../../actions/loginActions";
+import { setToastInfo } from "../../actions/appActions";
 
 export default props => {
   const history = useHistory();
@@ -14,21 +15,33 @@ export default props => {
   const { isLoggedIn } = useSelector(({ isLoggedIn }) => ({
     isLoggedIn
   }));
-  // if (isLoggedIn) {
-  //   history.push("/book");
-  // }
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  if (isLoggedIn) {
+    history.push("/book");
+  }
 
   const handleRegister = () => {
     history.push("/register");
   };
 
   const handleLogin = () => {
-    dispatch(setIsLoggedIn(true));
-    history.push("/book");
+    if (username && password) {
+      dispatch(setIsLoggedIn(true));
+      history.push("/book");
+    } else {
+      dispatch(
+        setToastInfo({
+          show: true,
+          type: "error",
+          message: "Please enter all details"
+        })
+      );
+    }
   };
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   return (
     <>
       <Header title="LOGIN TO APP" />
@@ -41,7 +54,7 @@ export default props => {
                 setUsername(e.target.value);
               }}
               placeholder="10-digit mobile number or e-mail"
-              variant="outlined"
+              variant="standard"
               margin="normal"
               required
               fullWidth
@@ -57,7 +70,7 @@ export default props => {
               }}
               placeholder=" Enter password"
               type="password"
-              variant="outlined"
+              variant="standard"
               margin="normal"
               required
               fullWidth
@@ -65,13 +78,18 @@ export default props => {
               label="Password"
               name="password"
             />
-            <Button onClick={handleLogin} variant="contained" color="primary">
+            <Button
+              className={s.submit}
+              onClick={handleLogin}
+              variant="contained"
+              color="primary"
+            >
               LOGIN
             </Button>
           </div>
           <div className={s.lower}>
             <div className={s.text}>Don't have an account?</div>
-            <button className={s.submit} onClick={handleRegister}>
+            <button className={s.link} onClick={handleRegister}>
               REGISTER NOW
             </button>
           </div>
